@@ -1,0 +1,13 @@
+/* src/styles/Header.css */
+header {
+  width: 100%;
+  background-color: var(--bg-color);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-color);
+}

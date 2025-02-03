@@ -12,28 +12,21 @@
   padding: 0;
 }
 
-/* Root Variables */
+/* Root Variables (단일 테마: 다크 모드) */
 :root {
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --transition-speed: 0.3s;
   --border-radius: 12px;
 
-  /* 다크 모드 (기본) */
   --bg-color: #121212;
   --text-color: #e0e0e0;
   --link-color: #82aaff;
   --link-hover: #a6c8ff;
-
-  /* 라이트 모드 */
-  --bg-color-light: #ffffff;
-  --text-color-light: #222;
   
-  /* 카드 스타일 */
   --card-bg: #1e1e1e;
   --card-text: #e0e0e0;
   --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  /* 강조 색상 */
   --accent-bg: rgba(130, 177, 255, 0.15);
   --accent-border: #82aaff;
 }
@@ -70,20 +63,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 헤더 */
-header {
-  width: 100%;
-  padding: 1.5rem 1rem;
-  background-color: var(--bg-color);
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-header h1 {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 700;
-  color: var(--text-color);
-}
-
 /* 메인 컨테이너 */
 .container {
   width: 100%;
@@ -92,98 +71,13 @@ header h1 {
   padding: 1rem;
 }
 
-/* 목록 스타일: 그리드 레이아웃 (아코디언 리스트는 세로로 쌓임) */
-.accordion-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* 아이콘 스타일일 */
+.w-5 {
+  width: 1.25rem; /* 약 20px */
 }
 
-/* 아코디언 아이템 */
-.accordion-item {
-  background-color: var(--card-bg);
-  color: var(--card-text);
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.accordion-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-}
-
-.accordion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-
-.accordion-header h2 {
-  font-size: 1.2rem;
-  margin-bottom: 0;
-}
-
-.accordion-toggle {
-  background: none;
-  border: none;
-  color: var(--link-color);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color var(--transition-speed);
-}
-
-.accordion-toggle:hover {
-  color: var(--link-hover);
-}
-
-.accordion-content {
-  margin-top: 1rem;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 성경 구절 강조 */
-.bible-verse {
-  padding: 1rem;
-  background-color: var(--accent-bg);
-  border-left: 4px solid var(--accent-border);
-  border-radius: var(--border-radius);
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 1rem;
-}
-
-/* 관련 성경 구절 섹션 */
-.related-bible-verses {
-  margin-top: 1.2rem;
-  padding: 1rem;
-  background-color: var(--accent-bg);
-  border-left: 4px solid var(--accent-border);
-  border-radius: var(--border-radius);
-  font-style: italic;
-  font-weight: 500;
-}
-.related-bible-verses h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.1rem;
-  color: var(--link-color);
-}
-.related-bible-verses ul {
-  list-style: disc inside;
-  padding-left: 1rem;
-  margin: 0;
-}
-.related-bible-verses li {
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
+.h-5 {
+  height: 1.25rem; /* 약 20px */
 }
 
 /* 버튼 스타일 (Modern, Material Design 느낌) */
@@ -210,70 +104,29 @@ button:focus-visible {
   box-shadow: 0 0 0 3px var(--link-hover);
 }
 
-/* 목차(TOC) 모달 스타일 */
-.toc-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
+/* 목차 버튼 전용 스타일 */
+.toc-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-}
-.toc-modal {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  padding: 1.5rem;
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--link-color);
+  color: #fff;
+  border: none;
   border-radius: var(--border-radius);
-  max-width: 90%;
-  max-height: 80%;
-  overflow-y: auto;
-}
-.toc-modal h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: var(--link-color);
-}
-.toc-modal ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.toc-modal li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  transition: background-color var(--transition-speed), transform 0.2s ease;
+  margin-bottom: 1.5rem;
 }
-.toc-modal li:hover {
-  background-color: var(--accent-bg);
+.toc-button:hover {
+  background-color: var(--link-hover);
+  transform: translateY(-2px);
 }
-.toc-modal button {
-  margin-top: 1rem;
-  width: 100%;
-}
-
-/* 라이트 모드 오버라이드 */
-@media (prefers-color-scheme: light) {
-  html {
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-  }
-  header {
-    background-color: var(--bg-color-light);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .accordion-item,
-  .catechism-detail {
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-  }
-  button {
-    background-color: #f9f9f9;
-    color: var(--text-color-light);
-  }
+.toc-button:active {
+  transform: translateY(0);
 }
 
 /* 반응형 디자인 */

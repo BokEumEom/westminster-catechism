@@ -18,12 +18,12 @@ const Home = () => {
 
   return (
     <div className="container">
-      <header>
-        <h1>웨스트민스터 소요리 문답</h1>
-        <button onClick={openTOC}>목차</button>
-      </header>
+      {/* 목차 버튼에 'toc-button' 클래스를 추가 */}
+      <button className="toc-button" onClick={openTOC}>목차</button>
       <CatechismAccordionList ref={accordionRef} />
-      {showTOC && <TableOfContents onClose={closeTOC} onSelect={handleSelectTOC} />}
+      {showTOC && (
+        <TableOfContents onClose={closeTOC} onSelect={handleSelectTOC} />
+      )}
     </div>
   );
 };
