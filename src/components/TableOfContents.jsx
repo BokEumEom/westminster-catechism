@@ -1,4 +1,3 @@
-// src/components/TableOfContents.jsx
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import useCatechismData from '../hooks/useCatechismData';
 import '../styles/TableOfContents.css';
@@ -23,7 +22,7 @@ const TableOfContents = ({ onClose, onSelect }) => {
             <li
               key={item.id}
               onClick={() => {
-                onSelect(item.id);
+                onSelect(item.id); // 선택한 문항의 페이지로 이동 & 스크롤 적용
                 onClose();
               }}
               role="button"

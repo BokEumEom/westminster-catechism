@@ -1,13 +1,92 @@
-/* src/styles/Header.css */
-header {
+/* 전체 헤더 스타일 */
+.header {
   width: 100%;
   background-color: var(--bg-color);
+  color: var(--text-color);
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header h1 {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+/* 컨테이너 내부 정렬 */
+.header .container {
+  width: 90%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 제목 스타일 */
+.header h1 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 700;
   color: var(--text-color);
+  white-space: nowrap;
+}
+
+/* 검색 폼 */
+.search-form {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 0.4rem 0.8rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* 검색 입력창 */
+.search-form input {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 200px;
+  outline: none;
+}
+
+/* 검색 버튼 */
+.search-form button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  color: var(--link-color);
+  transition: color var(--transition-speed);
+}
+
+.search-form button:hover {
+  color: var(--link-hover);
+}
+
+/* 아이콘 크기 */
+.icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+/* 반응형 디자인 (모바일 최적화) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .header .container {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .search-form {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .search-form input {
+    width: 100%;
+  }
 }
