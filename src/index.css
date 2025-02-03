@@ -1,0 +1,208 @@
+/* src/index.css */
+
+/* Google Fonts (Inter) 로드 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root Variables */
+:root {
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+
+  /* 다크 모드 (기본) */
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --link-color: #82aaff;
+  --link-hover: #a6c8ff;
+
+  /* 라이트 모드 */
+  --bg-color-light: #ffffff;
+  --text-color-light: #222;
+  
+  /* 카드 스타일 */
+  --card-bg: #1e1e1e;
+  --card-text: #e0e0e0;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* 강조 색상 */
+  --accent-bg: rgba(130, 177, 255, 0.15);
+  --accent-border: #82aaff;
+}
+
+/* Fluid typography with clamp */
+html {
+  font-family: var(--font-family);
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+/* 링크 스타일 */
+a {
+  color: var(--link-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* 헤더 */
+header {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  background-color: var(--bg-color);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+header h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* 메인 컨테이너 */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* 목록 스타일: 그리드 레이아웃 */
+.catechism-list {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* 문답 아이템 카드 */
+.catechism-item {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.catechism-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+.catechism-item h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.catechism-item p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* 상세 페이지 */
+.catechism-detail {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+.catechism-detail h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.catechism-detail p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 성경 구절 강조 */
+.bible-verse {
+  padding: 1rem;
+  background-color: var(--accent-bg);
+  border-left: 4px solid var(--accent-border);
+  border-radius: var(--border-radius);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 버튼 스타일 (Modern, Material Design 느낌) */
+button {
+  display: inline-block;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.8em 1.6em;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+button:hover {
+  background-color: var(--link-color);
+  transform: translateY(-2px);
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--link-hover);
+}
+
+/* 라이트 모드 오버라이드 */
+@media (prefers-color-scheme: light) {
+  html {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+  }
+  header {
+    background-color: var(--bg-color-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .catechism-item,
+  .catechism-detail {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+  }
+  button {
+    background-color: #f9f9f9;
+    color: var(--text-color-light);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.8rem;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  button {
+    padding: 0.7em 1.4em;
+  }
+}
